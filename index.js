@@ -2,7 +2,7 @@
 //while the api is waiting for the response everything else will run resulting in the await
 //Need to run the commands after 
 
-]function randomPokemon(){  //gets a random number then makes an API call for that pokemon
+function randomPokemon(){  //gets a random number then makes an API call for that pokemon
     x = Math.ceil(Math.random()*900)  
     getPokemon(x)
 }
@@ -40,26 +40,36 @@ function renderPokemonStats(pkmObject){ //we can get the data out, we need to ma
 }
 
 function renderPokemonExtra(pkmObject){ //extra stuff for hover
+    let shinyIMG = pkmObject.sprites.front_shiny //pokemons alternate shiny sprite
+    let typeArray = [] //all the types the pokemon has
+    let type = pkmObject.types
+        for (idx in type){
+            typeName = type[idx].type.name
+            typeArray.push(typeName)
+        }
+    let weight = pkmObject.weight //pokemons weight
+    let abilities = pkmObject.abilities 
+    let abilityArray = [] //all the abilities the pokemon has
+        for (idx in abilities){
+            abilityName = abilities[idx].ability.name
+            abilityArray.push(abilityName)
+        }
+    console.log(shinyIMG)
+    console.log(typeArray)
+    console.log(weight)
+    console.log(abilityArray)
     
-
-// type1
-// type2
-// weight
-// ability
-// alternatesprite
-
+    
+    document.querySelector('#weight1').textContent = weight
+    document.querySelector('#altsprite1').src = shinyIMG
+    document.querySelector('#typep1').textContent = typeArray
+    document.querySelector('#ability1').textContent = abilityArray
 }
-
-
-
 
 const getButton1 = document.querySelector('#b1') //Adds Random Event to first button
 getButton1.addEventListener("click", () =>{
     randomPokemon()
 })
-
-
-
 
 //Second Button Part
 
@@ -101,11 +111,34 @@ function renderPokemonStats2(pkmObject){ //we can get the data out, we need to m
         statValue = element.base_stat
         statName = element.stat.name
         let placeholder = document.querySelector(`#${statName}2`) //get location of the statname for pkmon1
-        placeholder.textContent = statValue
+        placeholder.textContent = statValue})
+}
 
-    })
-
- 
+function renderPokemonExtra2(pkmObject){ //extra stuff for hover
+    let shinyIMG = pkmObject.sprites.front_shiny //pokemons alternate shiny sprite
+    let typeArray = [] //all the types the pokemon has
+    let type = pkmObject.types
+        for (idx in type){
+            typeName = type[idx].type.name
+            typeArray.push(typeName)
+        }
+    let weight = pkmObject.weight //pokemons weight
+    let abilities = pkmObject.abilities 
+    let abilityArray = [] //all the abilities the pokemon has
+        for (idx in abilities){
+            abilityName = abilities[idx].ability.name
+            abilityArray.push(abilityName)
+        }
+    console.log(shinyIMG)
+    console.log(typeArray)
+    console.log(weight)
+    console.log(abilityArray)
+    
+    
+    document.querySelector('#weightp2').textContent = weight
+    document.querySelector('#altspritep2').src = shinyIMG
+    document.querySelector('#typesp2').textContent = typeArray
+    document.querySelector('#abilityp2').textContent = abilityArray
 }
 
 //TODO make this modular
@@ -116,12 +149,6 @@ function renderPokemonStats2(pkmObject){ //we can get the data out, we need to m
 //This would mean that the render function will take in the data it will be rendering from, and a location that it will render to. 
 //Add the rest of the elements needed for the HTML file and update that for now
 //We need to create a method for the pokemon battle as well. 
-
-// type1
-// type2
-// weight
-// ability
-// alternatesprite
 
 //event listener is not firing i think
 //pkmn1Sprite.addEventListener("mouseover",()=> {})
