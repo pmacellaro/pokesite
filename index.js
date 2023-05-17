@@ -178,3 +178,63 @@ pkmn2Sprite.addEventListener('mouseover', ()=> displaydiv('extrainfopkmn2'))
 pkmn2Sprite.addEventListener('mouseout', ()=> hidediv('extrainfopkmn2'))
 
 
+// https://www.youtube.com/watch?v=e0zs9M-ITh0&list=PLNVA15CuezfM-AZLt6IM9Xwk3VGySwn8R&index=17&ab_channel=DaintiiMusic
+
+
+let pkm1 = {attack:0,
+    defense:0,
+    hp:0,
+    speed:0}
+
+let pkm2 = {attack:0,
+        defense:0,
+        hp:0,
+        speed:0}
+    
+function startBattle(){ //this will setup the objects needed for the battle
+    //create 2 objects with the values needed for atk/def
+
+        pkm1.attack = document.querySelector('#attack1').textContent
+        pkm1.defense = document.querySelector('#defense1').textContent
+        pkm1.hp = document.querySelector('#hp1').textContent
+        pkm1.speed = document.querySelector('#speed1').textContent
+
+        pkm2.attack = document.querySelector('#attack2').textContent
+        pkm2.defense = document.querySelector('#defense2').textContent
+        pkm2.hp = document.querySelector('#hp2').textContent
+        pkm2.speed = document.querySelector('#speed2').textContent
+}
+
+function Attack(attackerObj,defenderObj,skillMod = 1){ //makesure to turn these into numbers first
+    let attackVal = attackerObj.attack 
+    let defenseVal = defenderObj.defense
+    let damageDealt = (skillMod*(attackVal-defenseVal))/10
+    
+    
+    //need to update this value onto the DOM i think the attack function should be within an event listener
+
+    return damageDealt
+
+}
+
+let oneAttacktwo = document.querySelector('#oneattack2')
+let twoAttackone = document.querySelector('#twoattack1')
+let battleStart = document.querySelector('#StartBattle')
+
+oneAttacktwo.addEventListener('click', () =>{
+    let dmgDealt = Attack(pkm1,pkm2)
+    console.log(dmgDealt)
+    let hp = document.querySelector('#hp2')
+    let newhp = hp.textContent-dmgDealt
+    hp.textContent = newhp
+})
+
+twoAttackone.addEventListener('click', () =>{
+    let dmgDealt = Attack(pkm2,pkm1)
+    console.log(dmgDealt)
+    let hp = document.querySelector('#hp1')
+    let newhp = hp.textContent-dmgDealt
+    hp.textContent = newhp
+})
+
+battleStart.addEventListener('click', ()=>startBattle())
