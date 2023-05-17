@@ -211,7 +211,7 @@ function Attack(attackerObj,defenderObj,skillMod = 1){ //makesure to turn these 
     let damageDealt = (skillMod*(attackVal-defenseVal))/10
     
     
-    //need to update this value onto the DOM i think the attack function should be within an event listener
+    //need to update this value onto the DOM i think the attack function should be within an event listener and just have the attack return the damage. this would allow it to be independent of location. 
 
     return damageDealt
 
