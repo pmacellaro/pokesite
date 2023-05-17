@@ -1,33 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="pokeCss.css">
   <style>
-
   </style>
 </head>
 <body>
   <img id="draggy" class="fixed" src="">
   <img id="droppy" class="fixed2" src="">
-  <script>
-var draggable = document.getElementById('draggy');
-  var droppable = document.getElementById('droppy');
-  draggable.addEventListener('dragstart', dragStart);
-  droppable.addEventListener('dragover', dragOver);
-  droppable.addEventListener('drop', drop);
-  function dragStart(event) {
-    // Set the data that will be transferred during the drag
-    event.dataTransfer.setData('placeholder', event.target.id);
-  }
-  function dragOver(event) {
-    event.preventDefault();
-  }
-  function drop(event) {
-    event.preventDefault();
-    var draggedElementId = event.dataTransfer.getData('placeholder');
-    var newNode = document.getElementById(imgData).cloneNode(true);
-    var draggedElement = document.getElementById(draggedElementId);
-    event.target.appendChild(draggedElement);
-  }
-  </script>
+  <script defer src="Poke.js"></script>
 </body>
 </html>

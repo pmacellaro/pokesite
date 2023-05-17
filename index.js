@@ -206,15 +206,16 @@ function startBattle(){ //this will setup the objects needed for the battle
 }
 
 function Attack(attackerObj,defenderObj,skillMod = 1){ //makesure to turn these into numbers first
-    let attackVal = attackerObj.attack 
+    let attackVal = attackerObj.attack
     let defenseVal = defenderObj.defense
-    let damageDealt = (skillMod*(attackVal-defenseVal))/10
-    
-    
-    //need to update this value onto the DOM i think the attack function should be within an event listener
-
+    let damageDealt = ((skillMod*(attackVal-defenseVal))/10)
+    if (damageDealt <=0){
+        damageDealt = Math.ceil(Math.random()*2) //either do 1 or 2 damage
+    }
+    let randomMod = Math.random() +.5 //changes range to .5-1.5
+    damageDealt = randomMod*damageDealt
+    //need to update this value onto the DOM i think the attack function should be within an event listener and just have the attack return the damage.
     return damageDealt
-
 }
 
 let oneAttacktwo = document.querySelector('#oneattack2')
@@ -238,3 +239,22 @@ twoAttackone.addEventListener('click', () =>{
 })
 
 battleStart.addEventListener('click', ()=>startBattle())
+var draggable = document.getElementById('pkmn1');
+var droppable = document.getElementById('pkmn2');
+draggable.addEventListener('dragstart', dragStart);
+droppable.addEventListener('dragover', dragOver);
+droppable.addEventListener('drop', drop);
+function dragStart(event) {
+  // Set the data that will be transferred during the drag
+  event.dataTransfer.setData('placeholder', event.target.id);
+}
+function dragOver(event) {
+  event.preventDefault();
+}
+function drop(event) {
+  event.preventDefault();
+  //var newNode = document.getElementById(imgData).cloneNode(true);
+  // var draggedElement = document.getElementById(draggedElementId);
+  //event.target.appendChild(draggedElement);
+  startBattle()
+}

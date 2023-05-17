@@ -12,7 +12,7 @@ img.fixed {
     width: 300px;
     border: 3px solid #73AD21;
   }
-      #draggy {
+  #pkmn1 {
     width: 100px;
     height: 100px;
     background-color: red;
@@ -20,7 +20,7 @@ img.fixed {
     padding: 10px;
     cursor: move;
   }
-  #droppy {
+  #pkmn2 {
     width: 100px;
     height: 100px;
     background-color: blue;
