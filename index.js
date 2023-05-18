@@ -7,7 +7,6 @@ function randomPokemon(){  //gets a random number then makes an API call for tha
     getPokemon(x)
 }
 
-
 function getPokemon(item){     //makes the api call and then gets the json data
     fetch(`https://pokeapi.co/api/v2/pokemon/${item}`)
         .then(resp => resp.json())
@@ -202,11 +201,11 @@ function startBattle(){ //this will setup the objects needed for the battle
         pkm1.hp = document.querySelector('#hp1').textContent
         pkm1.speed = document.querySelector('#speed1').textContent
 
-        pkm2.attack = document.querySelector('#attack2').textContent
+        pkm2.attack = document.querySelector('#attack2').textContent              
         pkm2.defense = document.querySelector('#defense2').textContent
-        pkm2.hp = document.querySelector('#hp2').textContent
+        pkm2.hp = document.querySelector('#hp2').textContent                       //is this pass by reference or value? i think reference, can save a value as an int for reset if it is pass by reference
         pkm2.speed = document.querySelector('#speed2').textContent
-        new Audio('/home/shams/Development/code/phase-1/PokeSite/pokesite/Pokémon RubySapphireEmerald - Wild Pokémon Battle Theme [Enhanced].mp3')
+        console.log('started')
 }
 
 function Attack(attackerObj,defenderObj,skillMod = 1){ //makesure to turn these into numbers first
@@ -259,21 +258,22 @@ battleStart.addEventListener('click', ()=>startBattle()) //remove this button th
 
 //Could add reset button but thats for another day
 
+var draggable = document.getElementById('pkmn1');
+var droppable = document.getElementById('pkmn2');
+draggable.addEventListener('dragstart', dragStart);
+droppable.addEventListener('dragover', dragOver);
+droppable.addEventListener('drop', drop);
 
+function dragStart(event) {
+  // Set the data that will be transferred during the drag
+  event.dataTransfer.setData('placeholder', event.target.id);
+}
 
+function dragOver(event) {
+  event.preventDefault();
+}
 
-// var draggable = document.getElementById('draggy');
-//   var droppable = document.getElementById('droppy');
-//   draggable.addEventListener('dragstart', dragStart);
-//   droppable.addEventListener('dragover', dragOver);
-//   droppable.addEventListener('drop', drop);
-//   function dragStart(event) {
-//     // Set the data that will be transferred during the drag
-//     event.dataTransfer.setData('placeholder', event.target.id);
-//   }
-//   function dragOver(event) {
-//     event.preventDefault();
-//   }
-//   function drop(event) {
-//   event.preventDefault();
-//   battlestart()}
+function drop(event) {
+  event.preventDefault();
+  startBattle()
+}
