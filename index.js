@@ -181,6 +181,9 @@ pkmn2Sprite.addEventListener('mouseout', ()=> hidediv('extrainfopkmn2'))
 // https://www.youtube.com/watch?v=e0zs9M-ITh0&list=PLNVA15CuezfM-AZLt6IM9Xwk3VGySwn8R&index=17&ab_channel=DaintiiMusic
 
 
+
+
+
 let pkm1 = {attack:0,
     defense:0,
     hp:0,
@@ -230,7 +233,12 @@ oneAttacktwo.addEventListener('click', () =>{
     console.log(dmgDealt)
     let hp = document.querySelector('#hp2')
     let newhp = hp.textContent-dmgDealt
-    hp.textContent = newhp
+    if (newhp <=0){
+        hp.textContent = 0
+        alert(`${document.querySelector('#name2').textContent} has fainted`)
+    }
+    else{
+    hp.textContent = newhp}
 })
 
 twoAttackone.addEventListener('click', () =>{
@@ -238,12 +246,19 @@ twoAttackone.addEventListener('click', () =>{
     console.log(dmgDealt)
     let hp = document.querySelector('#hp1')
     let newhp = hp.textContent-dmgDealt
-    hp.textContent = newhp
+    if (newhp <=0){
+        hp.textContent = 0
+        alert(`${document.querySelector('#name1').textContent} has fainted`)
+    }
+    else{
+    hp.textContent = newhp}
 })
 
 battleStart.addEventListener('click', ()=>startBattle())
 
-
+//Add event listener to the textContent of the HP
+//If hp is not 0 do nothing
+//If hp is 0 then run an alert. ending the battle 
 
 
 
