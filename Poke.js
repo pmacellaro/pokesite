@@ -40,4 +40,24 @@ function renderStats(pkmObject){
 }
 function renderDetails(pkmObject){}
 function populateFields()
-    
+
+
+var draggable = document.getElementById('pkmn1');
+var droppable = document.getElementById('pkmn2');
+draggable.addEventListener('dragstart', dragStart);
+droppable.addEventListener('dragover', dragOver);
+droppable.addEventListener('drop', drop);
+function dragStart(event) {
+  // Set the data that will be transferred during the drag
+  event.dataTransfer.setData('placeholder', event.target.id);
+}
+function dragOver(event) {
+  event.preventDefault();
+}
+function drop(event) {
+  event.preventDefault();
+  var draggedElementId = event.dataTransfer.getData('placeholder');
+  var newNode = document.getElementById(imgData).cloneNode(true);
+  var draggedElement = document.getElementById(draggedElementId);
+  event.target.appendChild(draggedElement);
+}
