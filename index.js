@@ -255,3 +255,4 @@ battleStart.addEventListener('click', ()=>startBattle()) //remove this button th
 //Look at the types and adjust skill mod for that as well. 
 //Fix the render functions so that they dont have locations hard coded so we dont have a duplicate set of functions. Could have them take in an array of id's for the locations to render to. 
 //Add the battle music when the battle starts. HOENN random pokemon battle slaps
+//For types we can have images instead of the listed array.
