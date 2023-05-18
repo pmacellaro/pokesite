@@ -1,7 +1,3 @@
-// This is the function to get the pokemon from an api
-//while the api is waiting for the response everything else will run resulting in the await
-//Need to run the commands after 
-
 function randomPokemon(){  //gets a random number then makes an API call for that pokemon
     x = Math.ceil(Math.random()*900)  
     getPokemon(x)
@@ -70,7 +66,7 @@ getButton1.addEventListener("click", () =>{
     randomPokemon()
 })
 
-//Second Button Part
+//Second Button Part Had to duplicate since I hard coded in locations to render to 
 
 
 const getButton2 = document.querySelector('#b2') //Adds Random Event to Second Button
@@ -90,7 +86,7 @@ function getPokemon2(item){     //makes the api call and then gets the json data
         .then(data => main2(data))
 }
 
-function main2(data) {  //this rn is just to do everything we can fix it after to make it not shit
+function main2(data) {  
     //data is a object
     renderPokemonImg2(data) //gets the info for the population of the render
     renderPokemonStats2(data) //gets the info for the stats
@@ -115,13 +111,13 @@ function renderPokemonStats2(pkmObject){ //we can get the data out, we need to m
 
 function renderPokemonExtra2(pkmObject){ //extra stuff for hover
     let shinyIMG = pkmObject.sprites.front_shiny //pokemons alternate shiny sprite
+    let weight = pkmObject.weight //pokemons weight
     let typeArray = [] //all the types the pokemon has
     let type = pkmObject.types
         for (idx in type){
             typeName = type[idx].type.name
             typeArray.push(typeName)
         }
-    let weight = pkmObject.weight //pokemons weight
     let abilities = pkmObject.abilities 
     let abilityArray = [] //all the abilities the pokemon has
         for (idx in abilities){
@@ -132,29 +128,13 @@ function renderPokemonExtra2(pkmObject){ //extra stuff for hover
     console.log(typeArray)
     console.log(weight)
     console.log(abilityArray)
-    
-    
     document.querySelector('#weightp2').textContent = weight
     document.querySelector('#altspritep2').src = shinyIMG
     document.querySelector('#typesp2').textContent = typeArray
     document.querySelector('#abilityp2').textContent = abilityArray
 }
 
-//TODO make this modular
-//The issue is that the location we render to will differ for each button
-//We could set it so 1 function just gets the data out and returns an object
-//We then pass that object with the info into a render function but that render function also uses a location?
-//For Each click we know what we will be populating, we can create an array of Id's that we will be using. Once we get to the part of placing the data we will reference the array for the location. Select that location and add the value then. 
-//This would mean that the render function will take in the data it will be rendering from, and a location that it will render to. 
-//Add the rest of the elements needed for the HTML file and update that for now
-//We need to create a method for the pokemon battle as well. 
-
-//event listener is not firing i think
-//pkmn1Sprite.addEventListener("mouseover",()=> {})
-
-//When document is loaded there is no event listener. Vereified from looking at event listeners tab in browser 
-//HAHA was looking at the html file that was linked to the old index js. wasted 40 minutes trying to solve a problem that was hear hahahahahaahahahahahahahaahfuck
-
+//Mouseover and Mouseout event listener to toggle extra info pannel
 
 function hidediv(id){ 
     let element = document.getElementById(id)
@@ -176,12 +156,30 @@ const pkmn2Sprite = document.querySelector('#pkmn2')
 pkmn2Sprite.addEventListener('mouseover', ()=> displaydiv('extrainfopkmn2'))
 pkmn2Sprite.addEventListener('mouseout', ()=> hidediv('extrainfopkmn2'))
 
+//Drag and Drop Event Listeners to start the Battle
 
-// https://www.youtube.com/watch?v=e0zs9M-ITh0&list=PLNVA15CuezfM-AZLt6IM9Xwk3VGySwn8R&index=17&ab_channel=DaintiiMusic
+var draggable = document.getElementById('pkmn1');
+var droppable = document.getElementById('pkmn2');
+draggable.addEventListener('dragstart', dragStart);
+droppable.addEventListener('dragover', dragOver);
+droppable.addEventListener('drop', drop);
+
+function dragStart(event) {
+  // Set the data that will be transferred during the drag
+  event.dataTransfer.setData('placeholder', event.target.id);
+}
+
+function dragOver(event) {
+  event.preventDefault();
+}
+
+function drop(event) {
+  event.preventDefault();
+  startBattle()
+}
 
 
-
-
+//Battle Functions
 
 let pkm1 = {attack:0,
     defense:0,
@@ -194,7 +192,6 @@ let pkm2 = {attack:0,
         speed:0}
     
 function startBattle(){ //this will setup the objects needed for the battle
-    //create 2 objects with the values needed for atk/def
 
         pkm1.attack = document.querySelector('#attack1').textContent
         pkm1.defense = document.querySelector('#defense1').textContent
@@ -203,28 +200,24 @@ function startBattle(){ //this will setup the objects needed for the battle
 
         pkm2.attack = document.querySelector('#attack2').textContent              
         pkm2.defense = document.querySelector('#defense2').textContent
-        pkm2.hp = document.querySelector('#hp2').textContent                       //is this pass by reference or value? i think reference, can save a value as an int for reset if it is pass by reference
+        pkm2.hp = document.querySelector('#hp2').textContent    //is this pass by reference or value? i think reference, can save a value as an int for reset if it is pass by reference
         pkm2.speed = document.querySelector('#speed2').textContent
         console.log('started')
 }
 
-function Attack(attackerObj,defenderObj,skillMod = 1){ //makesure to turn these into numbers first
+function Attack(attackerObj,defenderObj,skillMod = 1){ //Skill mod exists for stretch goals
     let attackVal = attackerObj.attack 
     let defenseVal = defenderObj.defense
     let damageDealt = ((skillMod*(attackVal-defenseVal))/10)
     if (damageDealt <=0){
-        damageDealt = Math.ceil(Math.random()*2) //either do 1 or 2 damage
+        damageDealt = Math.ceil(Math.random()*2) //either do 1 or 2 base damage
     }
-
     let randomMod = Math.random() +.5 //changes range to .5-1.5
     damageDealt = randomMod*damageDealt
-      
-    //need to update this value onto the DOM i think the attack function should be within an event listener and just have the attack return the damage. 
-
     return damageDealt
 }
 
-let oneAttacktwo = document.querySelector('#oneattack2')
+let oneAttacktwo = document.querySelector('#oneattack2') 
 let twoAttackone = document.querySelector('#twoattack1')
 let battleStart = document.querySelector('#StartBattle')
 
@@ -256,24 +249,10 @@ twoAttackone.addEventListener('click', () =>{
 
 battleStart.addEventListener('click', ()=>startBattle()) //remove this button the battle start will occur on drag and drop was good for testing though. 
 
-//Could add reset button but thats for another day
-
-var draggable = document.getElementById('pkmn1');
-var droppable = document.getElementById('pkmn2');
-draggable.addEventListener('dragstart', dragStart);
-droppable.addEventListener('dragover', dragOver);
-droppable.addEventListener('drop', drop);
-
-function dragStart(event) {
-  // Set the data that will be transferred during the drag
-  event.dataTransfer.setData('placeholder', event.target.id);
-}
-
-function dragOver(event) {
-  event.preventDefault();
-}
-
-function drop(event) {
-  event.preventDefault();
-  startBattle()
-}
+//TODO and stretch goals
+//make it not look like shit
+//We can load buttons for 4 moves assigned to the pokemon. These moves can be used in the attack functions and adjust the skill mods
+//Battles are turn based so we should grey out on button at all times so someone can't just spam 1 to death. Which button is active first can be based of the pokemons speed
+//Look at the types and adjust skill mod for that as well. 
+//Fix the render functions so that they dont have locations hard coded so we dont have a duplicate set of functions. Could have them take in an array of id's for the locations to render to. 
+//Add the battle music when the battle starts. HOENN random pokemon battle slaps
