@@ -206,6 +206,7 @@ function startBattle(){ //this will setup the objects needed for the battle
         pkm2.defense = document.querySelector('#defense2').textContent
         pkm2.hp = document.querySelector('#hp2').textContent
         pkm2.speed = document.querySelector('#speed2').textContent
+        new Audio('/home/shams/Development/code/phase-1/PokeSite/pokesite/Pokémon RubySapphireEmerald - Wild Pokémon Battle Theme [Enhanced].mp3')
 }
 
 function Attack(attackerObj,defenderObj,skillMod = 1){ //makesure to turn these into numbers first
@@ -235,7 +236,7 @@ oneAttacktwo.addEventListener('click', () =>{
     let newhp = hp.textContent-dmgDealt
     if (newhp <=0){
         hp.textContent = 0
-        alert(`${document.querySelector('#name2').textContent} has fainted`)
+        alert(`${document.querySelector('#name2').textContent} has fainted Get new Pokemon`)
     }
     else{
     hp.textContent = newhp}
@@ -248,17 +249,15 @@ twoAttackone.addEventListener('click', () =>{
     let newhp = hp.textContent-dmgDealt
     if (newhp <=0){
         hp.textContent = 0
-        alert(`${document.querySelector('#name1').textContent} has fainted`)
+        alert(`${document.querySelector('#name1').textContent} has fainted Get new Pokemon`)
     }
     else{
     hp.textContent = newhp}
 })
 
-battleStart.addEventListener('click', ()=>startBattle())
+battleStart.addEventListener('click', ()=>startBattle()) //remove this button the battle start will occur on drag and drop was good for testing though. 
 
-//Add event listener to the textContent of the HP
-//If hp is not 0 do nothing
-//If hp is 0 then run an alert. ending the battle 
+//Could add reset button but thats for another day
 
 
 
