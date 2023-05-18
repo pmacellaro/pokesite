@@ -214,7 +214,7 @@ function Attack(attackerObj,defenderObj,skillMod = 1){ //Skill mod exists for st
     }
     let randomMod = Math.random() +.5 //changes range to .5-1.5
     damageDealt = randomMod*damageDealt
-    return damageDealt
+    return damageDealt}
 
 let oneAttacktwo = document.querySelector('#oneattack2') 
 let twoAttackone = document.querySelector('#twoattack1')
@@ -255,3 +255,4 @@ battleStart.addEventListener('click', ()=>startBattle()) //remove this button th
 //Look at the types and adjust skill mod for that as well. 
 //Fix the render functions so that they dont have locations hard coded so we dont have a duplicate set of functions. Could have them take in an array of id's for the locations to render to. 
 //Add the battle music when the battle starts. HOENN random pokemon battle slaps
+//For types we can have images instead of the listed array.
