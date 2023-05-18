@@ -214,7 +214,7 @@ function Attack(attackerObj,defenderObj,skillMod = 1){ //Skill mod exists for st
     }
     let randomMod = Math.random() +.5 //changes range to .5-1.5
     damageDealt = randomMod*damageDealt
-    return damageDealt
+    return damageDealt}
 
 let oneAttacktwo = document.querySelector('#oneattack2') 
 let twoAttackone = document.querySelector('#twoattack1')
