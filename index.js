@@ -49,13 +49,7 @@ function renderPokemonExtra(pkmObject){ //extra stuff for hover
         for (idx in abilities){
             abilityName = abilities[idx].ability.name
             abilityArray.push(abilityName)
-        }
-    console.log(shinyIMG)
-    console.log(typeArray)
-    console.log(weight)
-    console.log(abilityArray)
-    
-    
+        }  
     document.querySelector('#weight1').textContent = weight
     document.querySelector('#altsprite1').src = shinyIMG
     document.querySelector('#typep1').textContent = typeArray
@@ -126,10 +120,6 @@ function renderPokemonExtra2(pkmObject){ //extra stuff for hover
             abilityName = abilities[idx].ability.name
             abilityArray.push(abilityName)
         }
-    console.log(shinyIMG)
-    console.log(typeArray)
-    console.log(weight)
-    console.log(abilityArray)
     document.querySelector('#weightp2').textContent = weight
     document.querySelector('#altspritep2').src = shinyIMG
     document.querySelector('#typesp2').textContent = typeArray
@@ -208,13 +198,12 @@ function startBattle(){ //this will setup the objects needed for the battle
         pkm2.defense = document.querySelector('#defense2').textContent
         pkm2.hp = document.querySelector('#hp2').textContent    //is this pass by reference or value? i think reference, can save a value as an int for reset if it is pass by reference
         pkm2.speed = document.querySelector('#speed2').textContent
-        console.log('started')
 }
 
 function Attack(attackerObj,defenderObj,skillMod = 1){ //Skill mod exists for stretch goals
     let attackVal = attackerObj.attack 
     let defenseVal = defenderObj.defense
-    let damageDealt = ((skillMod*(attackVal-defenseVal))/10)
+    let damageDealt = ((skillMod*(attackVal-defenseVal))/4)
     if (damageDealt <=0){
         damageDealt = Math.ceil(Math.random()*2) //either do 1 or 2 base damage
     }
@@ -230,7 +219,7 @@ oneAttacktwo.addEventListener('click', () =>{
     let dmgDealt = Attack(pkm1,pkm2)
     //console.log(dmgDealt)
     let hp = document.querySelector('#hp2')
-    let newhp = hp.textContent-dmgDealt
+    let newhp = Math.floor(hp.textContent-dmgDealt) //Use floor so always have at least some damage done
     //console.log(pkm2)
     if (newhp <=0){
         hp.textContent = 0
@@ -246,7 +235,7 @@ twoAttackone.addEventListener('click', () =>{
     let dmgDealt = Attack(pkm2,pkm1)
     //console.log(dmgDealt)
     let hp = document.querySelector('#hp1')
-    let newhp = hp.textContent-dmgDealt
+    let newhp = Math.floor(hp.textContent-dmgDealt)
     //console.log(pkm1)
     if (newhp <=0){
         hp.textContent = 0
@@ -261,6 +250,7 @@ twoAttackone.addEventListener('click', () =>{
 battleStart.addEventListener('click', ()=>startBattle()) //remove this button the battle start will occur on drag and drop was good for testing though. 
 
 //TODO and stretch goals
+//Round the HP values 
 //make it not look like shit
 //We can load buttons for 4 moves assigned to the pokemon. These moves can be used in the attack functions and adjust the skill mods
 //Battles are turn based so we should grey out on button at all times so someone can't just spam 1 to death. Which button is active first can be based of the pokemons speed
