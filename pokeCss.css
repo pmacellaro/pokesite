@@ -31,7 +31,7 @@
   
 }
 
-img.fixed2 {
+#pkmn2 {
     position: fixed;
     bottom: 400px;
     right: 500px;
@@ -226,4 +226,35 @@ img.hpIcon2{
   position:fixed;
   bottom: 350px;
   right: 640px;
+}
+ #hpName1{
+  font-size: medium;
+  position:fixed;
+  bottom: 360px;
+  right: 1220px;
+  width: 20px;
+}
+#hpName2{
+  font-size: medium;
+  position:fixed;
+  bottom: 360px;
+  right: 420px;
+  width: 20px;
+}
+#defIcon1{
+  position:fixed;
+  bottom: 320px;
+  right: 1250px;
+  width: 20px;
+}
+#defense1{
+  position:fixed;
+  bottom: 317px;
+  right: 1270px;
+}
+#defIcon2{
+  position:fixed;
+  bottom: 320px;
+  right: 450px;
+  width: 20px
 }
