@@ -190,7 +190,11 @@ let pkm2 = {attack:0,
         defense:0,
         hp:0,
         speed:0}
-    
+
+pkmn1hpint = parseInt(pkm1.hp) 
+pkmn2hpint = parseInt(pkm2.hp) //is this a reference or value copy?
+
+        
 function startBattle(){ //this will setup the objects needed for the battle
 
         pkm1.attack = document.querySelector('#attack1').textContent
@@ -227,10 +231,12 @@ oneAttacktwo.addEventListener('click', () =>{
     let newhp = hp.textContent-dmgDealt
     if (newhp <=0){
         hp.textContent = 0
+        document.querySelector('#health1').value = 0
         alert(`${document.querySelector('#name2').textContent} has fainted Get new Pokemon`)
     }
     else{
-    hp.textContent = newhp}
+    hp.textContent = newhp
+    document.querySelector('#health2').value = (newhp/pkmn2hpint)}
 })
 
 twoAttackone.addEventListener('click', () =>{
@@ -240,10 +246,12 @@ twoAttackone.addEventListener('click', () =>{
     let newhp = hp.textContent-dmgDealt
     if (newhp <=0){
         hp.textContent = 0
+        document.querySelector('#health2').value = 0
         alert(`${document.querySelector('#name1').textContent} has fainted Get new Pokemon`)
     }
     else{
-    hp.textContent = newhp}
+    hp.textContent = newhp
+    document.querySelector('#health1').value = (newhp/pkmn1hpint)}
 })
 
 battleStart.addEventListener('click', ()=>startBattle()) //remove this button the battle start will occur on drag and drop was good for testing though. 
