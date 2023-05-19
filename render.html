@@ -3,47 +3,51 @@
 <!DOCTYPE html>
 
 <html>
+    <header id=titleHead style="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">Poke-Battle</header>
     <head>
         <title>PokeBattle</title>
         <link rel="stylesheet" href="pokeCss.css">
-        
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
 <body> 
-    <h4 id="header">Hello</h4>
-    <progress id="health1" value="100" max="100"></progress>
-    <progress id="health2" value="100" max="100"></progress>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+        </style>
+    <h4 id="header"></h4>
+
     <div>  <!-- pokemon div 1 -->
-        <img class="pkmnbutton" id="pkmn1" src="https://cdn-icons-png.flaticon.com/512/4211/4211763.png" alt="Pokemon 1"> 
-        <p id="name1">pokemon Name</p>
-        <div> <!-- stats-->
+        <img class="fixed" id="pkmn1" src="https://cdn-icons-png.flaticon.com/512/4211/4211763.png" alt="test"> 
+        <p id="name1">pokemonName</p>
+        <div class="pokeStats1"> <!-- stats-->
             <div> <!--stat1 ATK --> 
-               <img id="atkicon1" src="https://cdn-icons-png.flaticon.com/512/8024/8024108.png" alt="Attack Icon">
-               <h3>ATTACK</h3>
-               <p id="attack1">ATK value</p> 
+               <img class= attackIcon1 src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dfgb60u-0487066d-d95f-4b5e-9501-73fe14ecf981.png/v1/fill/w_894,h_894/physical_move_icon_by_jormxdos_dfgb60u-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2U4ZGRjNGRhLTIzZGQtNDUwMi1iNjViLTM3OGM5Y2ZlNWVmYVwvZGZnYjYwdS0wNDg3MDY2ZC1kOTVmLTRiNWUtOTUwMS03M2ZlMTRlY2Y5ODEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.1oShRDrq7t5ZzLkHA_JbjMGypMuj0dCSpD-o7nTzZYw" alt="test">
+               <h3 id= attackName1>ATK</h3>
+               <p id="attack1"></p> 
             </div>
             <div> <!--stat2 HP-->
-                <img id="hpicon1" src="https://static.wikia.nocookie.net/2007scape/images/9/96/Hitpoints_icon.png/revision/latest?cb=20180424005312" alt="HP Icon">
-                <h3>HP</h3>
-                <p id="hp1">HP value</p>
+                <img class="hpIcon1" src="https://static.wikia.nocookie.net/pokemonfireash/images/d/df/Dream_Potion_Sprite.png/revision/latest?cb=20220917153800" alt="test">
+                <h3 id= hpName1>HP</h3>
+                <p id="hp1"></p>
             </div>
             <div> <!--stat3 DEF-->
-                <img id="deficon1" src="https://cdn-icons-png.flaticon.com/128/31/31837.png" alt="Defense Icon">
-                <h3>DEFENSE</h3>
-                <p id="defense1">DEF value</p>
+                <img id= defIcon1 src="https://cdn.icon-icons.com/icons2/3360/PNG/512/soldier_military_warrior_knight_medieval_war_protection_security_shield_icon_210785.png" alt="test">
+                <h3 id="defenseName1">DEF</h3>
+                <p id="defense1"></p>
             </div>
             <div> <!--stat4 SPEATK-->
-                <img id="spacicon1" src="https://cdn-icons-png.flaticon.com/128/3522/3522092.png" alt="special Attack Icon">
-                <h3>Special ATTACK</h3>
-                <p id="special-attack1">special ATK value</p>
+                <img id=spatkIcon1 src="https://faqsmedia.ign.com/faqs/image/article/109/1094653/special_attack_icon.jpg" alt="test">
+                <h3 id="spatkName1">SpAtk</h3>
+                <p id="special-attack1"></p>
             </div>
             <div> <!--stat5 SPEDEF-->
-                <img id="spedicon1" src="https://cdn-icons-png.flaticon.com/128/595/595764.png" alt="Special Defense Icon">
-                <h3>Special DEFENSE</h3>
-                <p id="special-defense1">special DEF value</p>
+                <img id=spdefIcon1 src="https://cdn.staticcrate.com/stock-hd/effects/footagecrate-anime-force-field-prev-full.png" alt="test">
+                <h3 id="spdefName1">SpDef</h3>
+                <p id="special-defense1"></p>
             </div>
             <div> <!--stat6 SPEED-->
-                <img id="speedicon1" src="https://cdn-icons-png.flaticon.com/128/3064/3064026.png" alt="Speed Icon">
-                <h3>SPEED</h3>
-                <p id="speed1">SPEED value</p>
+                <img id="speedIcon1" src="https://cdn2.iconfinder.com/data/icons/rpg-basic-set-2/512/fly-512.png" alt="test">
+                <h3 id="speedName1">SPD</h3>
+                <p id="speed1"></p>
             </div>
         </div>
         <div id="extrainfopkmn1">  
@@ -51,8 +55,8 @@
                 <h2>Extra Info</h2>
                 <h3>Type(s)</h3>
                 <p id="typep1">Types</p>
-                <h3>weight (lbs)</h3>
-                <p id="weight1">weight</p>
+                <h3>Weight (lbs)</h3>
+                <p id="weight1">Weight</p>
                 <h3>Abilities</h3>
                 <p id="ability1">Abilities</p>
                 <h3>Shiny Sprite</h3>
@@ -66,34 +70,36 @@
         <p id="name2">pokemon Name</p>
         <div> <!-- stats-->
             <div> <!--stat1 --> 
-               <img id="atkicon2" src="https://cdn-icons-png.flaticon.com/512/8024/8024108.png" alt="Attack Icon">
-               <h3>ATK</h3>
-               <p id="attack2">ATK value</p> 
+               <img id=attackIcon2 src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dfgb60u-0487066d-d95f-4b5e-9501-73fe14ecf981.png/v1/fill/w_894,h_894/physical_move_icon_by_jormxdos_dfgb60u-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2U4ZGRjNGRhLTIzZGQtNDUwMi1iNjViLTM3OGM5Y2ZlNWVmYVwvZGZnYjYwdS0wNDg3MDY2ZC1kOTVmLTRiNWUtOTUwMS03M2ZlMTRlY2Y5ODEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.1oShRDrq7t5ZzLkHA_JbjMGypMuj0dCSpD-o7nTzZYw" alt="test">
+               <h3 id="attackName2">ATK</h3>
+               <p id="attack2"></p> 
             </div>
             <div> <!--stat2 HP-->
-                <img id="hpicon2" src="https://static.wikia.nocookie.net/2007scape/images/9/96/Hitpoints_icon.png/revision/latest?cb=20180424005312" alt="HP Icon">
-                <h3>HP</h3>
-                <p id="hp2">HP value</p>
+                <img class=hpIcon2 src="https://static.wikia.nocookie.net/pokemonfireash/images/d/df/Dream_Potion_Sprite.png/revision/latest?cb=20220917153800" alt="test">
+                <h3 id="hpName2">HP</h3>
+                <p id="hp2"></p>
             </div>
             <div> <!--stat3 DEF-->
-                <img id="deficon2" src="https://cdn-icons-png.flaticon.com/128/31/31837.png" alt="Defense Icon">
-                <h3>DEF</h3>
-                <p id="defense2">DEF value</p>
+                <img id="defIcon2" src="https://cdn.icon-icons.com/icons2/3360/PNG/512/soldier_military_warrior_knight_medieval_war_protection_security_shield_icon_210785.png" alt="Defense Icon">
+                <h3 id="defenseName2">DEF</h3>
+                <p id="defense2"></p>
             </div>
             <div> <!--stat4 SPEATK-->
-                <img id="spacicon2" src="https://cdn-icons-png.flaticon.com/128/3522/3522092.png" alt="Special Attack Icon">
-                <h3>Special ATK</h3>
-                <p id="special-attack2">special ATK value</p>
+                <img id="spatkIcon2" src="https://faqsmedia.ign.com/faqs/image/article/109/1094653/special_attack_icon.jpg" alt="Special Attack Icon">
+                <h3 id="spatkName2">SpAtk</h3>
+                <p id="special-attack2"></p>
             </div>
             <div> <!--stat5 SPEDEF-->
-                <img id="spedicon2" src="https://cdn-icons-png.flaticon.com/128/595/595764.png" alt="Special Defense Icon">
-                <h3>Special DEF</h3>
-                <p id="special-defense2">special DEF value</p>
+                <img id="spdefIcon2" src="https://cdn.staticcrate.com/stock-hd/effects/footagecrate-anime-force-field-prev-full.png" alt="Special Defense Icon">
+                <h3 id="spdefName2">SpDef</h3>
+                <p id="special-defense2"></p>
             </div>
+            <progress id="health1" value="100" max="100"></progress>
+            <progress id="health2" value="100" max="100"></progress>
             <div> <!--stat6 SPEED-->
-                <img id="speedicon2" src="https://cdn-icons-png.flaticon.com/128/3064/3064026.png" alt="Speed Icon">
-                <h3>SPEED</h3>
-                <p id="speed2">SPEED value</p>
+                <img id="speedIcon2" src="https://cdn2.iconfinder.com/data/icons/rpg-basic-set-2/512/fly-512.png" alt="Speed Icon">
+                <h3 id="speedName2">SPD</h3>
+                <p id="speed2"></p>
             </div>
         </div>
         <div id="extrainfopkmn2">  
@@ -101,7 +107,7 @@
                 <h3>Type(s)</h3>
                 <p id="typesp2">Type 1</p>
                 <h3>Weight (lbs)</h3>
-                <p id="weightp2">weight</p>
+                <p id="weightp2">Weight</p>
                 <h3>Abilities</h3>
                 <p id="abilityp2">Abilities</p>
                 <h3>Shiny Sprite</h3>
