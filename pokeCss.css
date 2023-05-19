@@ -1,7 +1,23 @@
+#extrainfopkmn1 {
+  background-color: #EFF3FF;
+  color: #73AD21;
+  position: fixed;
+  bottom: 400px;
+  right: 1500px;
+  width: 200px;
+}
+#extrainfopkmn2 {
+  background-color: #EFF3FF;
+  color: #73AD21;
+  position: fixed;
+  bottom: 400px;
+  right: 200px;
+  width: 200px;
+}
 img.fixed2 {
     position: fixed;
     bottom: 400px;
-    right: 200px;
+    right: 500px;
     width: 300px;
     border: 3px solid #73AD21;
   }
@@ -15,7 +31,7 @@ img.fixed {
   #pkmn1 {
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-color: #EFF3FF;;
     color: white;
     padding: 10px;
     cursor: move;
@@ -23,7 +39,95 @@ img.fixed {
   #pkmn2 {
     width: 100px;
     height: 100px;
-    background-color: blue;
+    background-color: #EFF3FF;;
     color: white;
     padding: 10px;
   }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    background-color: #EFF3FF;
+  }
+  .container {
+    width: 350px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+  #card {
+    position: relative;
+    width: 100%;
+    padding: 30px 20px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+  #card img {
+    display: block;
+    width: 180px;
+    max-height: 200px;
+    position: relative;
+    margin: 20px auto;
+  }
+  .hp {
+    width: 80px;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 30px;
+    margin-left: auto;
+    font-weight: 400;
+  }
+  .poke-name {
+    text-align: center;
+    font-weight: 600;
+  }
+  .types {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0 40px 0;
+  }
+  .hp span,
+  .types span {
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    font-weight: 600;
+  }
+  .types span {
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: #FFFFFF;
+  }
+  .stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .stats p {
+    color: #404060;
+  }
+  #health1{
+    position: fixed;
+    bottom: 350px;
+    right: 1270px;
+  }
+  #health2{
+    position: fixed;
+    bottom: 350px;
+    right: 470px;
+  }
+#hp1{
+  position:fixed;
+  bottom: 360px;
+  right: 1270px;
+}
+#hp2{
+  position:fixed;
+  bottom: 360px;
+  right: 470px;
+}

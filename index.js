@@ -22,6 +22,7 @@ function renderPokemonImg(pkmObject){ //grab the sprite we will use for the poke
     document.querySelector('#name1').textContent = name //need to not hardcode the location
     let placeholder = document.querySelector("#pkmn1")  //need to not hardcode the location
     placeholder.src = frontIMG    
+    document.querySelector('#health1').value = 100
 }
 
 function renderPokemonStats(pkmObject){ //we can get the data out, we need to make it so we have vary the location we assign the data to 
@@ -99,6 +100,7 @@ function renderPokemonImg2(pkmObject){ //grab the sprite we will use for the pok
     document.querySelector('#name2').textContent = name //need to not hardcode the location
     let placeholder = document.querySelector("#pkmn2")  //need to not hardcode the location
     placeholder.src = frontIMG    
+    document.querySelector('#health2').value = 100
 }
 
 function renderPokemonStats2(pkmObject){ //we can get the data out, we need to make it so we have vary the location we assign the data to 
@@ -226,32 +228,34 @@ let battleStart = document.querySelector('#StartBattle')
 
 oneAttacktwo.addEventListener('click', () =>{
     let dmgDealt = Attack(pkm1,pkm2)
-    console.log(dmgDealt)
+    //console.log(dmgDealt)
     let hp = document.querySelector('#hp2')
     let newhp = hp.textContent-dmgDealt
+    //console.log(pkm2)
     if (newhp <=0){
         hp.textContent = 0
-        document.querySelector('#health1').value = 0
+        document.querySelector('#health2').value = 0
         alert(`${document.querySelector('#name2').textContent} has fainted Get new Pokemon`)
     }
     else{
     hp.textContent = newhp
-    document.querySelector('#health2').value = (newhp/pkmn2hpint)}
+    document.querySelector('#health2').value = (newhp/pkm2.hp)*100}
 })
 
 twoAttackone.addEventListener('click', () =>{
     let dmgDealt = Attack(pkm2,pkm1)
-    console.log(dmgDealt)
+    //console.log(dmgDealt)
     let hp = document.querySelector('#hp1')
     let newhp = hp.textContent-dmgDealt
+    //console.log(pkm1)
     if (newhp <=0){
         hp.textContent = 0
-        document.querySelector('#health2').value = 0
+        document.querySelector('#health1').value = 0
         alert(`${document.querySelector('#name1').textContent} has fainted Get new Pokemon`)
     }
     else{
     hp.textContent = newhp
-    document.querySelector('#health1').value = (newhp/pkmn1hpint)}
+    document.querySelector('#health1').value = (newhp/pkm1.hp)*100}
 })
 
 battleStart.addEventListener('click', ()=>startBattle()) //remove this button the battle start will occur on drag and drop was good for testing though. 
